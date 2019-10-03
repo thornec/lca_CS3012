@@ -13,10 +13,12 @@ class lcatest {
 	
 	@Test
 	/* Code to test if binary tree can add new elements */
-	public void testGet() {
-		lca binaryTree = new lca();
-		binaryTree.put(2); // Need to create method that takes a value and creates a new node
-		assertEquals(binaryTree.get(2).intValue(),2); // Need to create method to get value of node from given index
+	public void testInsertNewElements() {
+		lca bt = createBinaryTree(); 		//Create Binary Tree to run tests on
+		/* Contains Elements 6, 4, 8, 3, 5, 7, 9 */
+		assertTrue(bt.containsNode(6)); // Return True
+		assertTrue(bt.containsNode(4)); // Return True
+		assertFalse(bt.containsNode(1)); // Return False
 	}
 	
 	@Test
