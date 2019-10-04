@@ -85,7 +85,22 @@ public class lca {
 		}
 		/* Node to delete found */
 		if(data == current.data){
-			
+			/* Node is leaf node */
+			if(current.left == null && current.right == null){
+				return null;
+			}
+			/* Node has one child */
+			if(current.right == null){
+				return current.left;	// return non null child so it can be assigned to parent node
+			}
+			if(current.left == null){
+				return current.right;
+			}
+			int smallestValue = findSmallestValue(current.right);
+			current.value = smallestValue;
+			current.right = deleteRecursive(current.right, smallestValue);
+			current.right = deleteRecursive(current.right, smallestValue);
+			return current;
 		}
 		/* Data < CurrentNodeData so go left */
 		if(data < current.data){
@@ -97,6 +112,21 @@ public class lca {
 		return current;
 	}
 
+
+	private int findSmallestValue(Node root){
+		return root.left == null ? root.value : findSmallestValue(root.left);
+	}
+
+	/*Pubic method that starts deletion from the root */
+	public void delete(int data){
+		root = deleteRecursive(root, data);
+	}
+
+	/* Method to check if tree is empty */
+	public boolean isEmpty(){
+			if(root == null) return true;
+			else return false;
+	}
 
 	
 }

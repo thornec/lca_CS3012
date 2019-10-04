@@ -24,10 +24,12 @@ class lcatest {
 	@Test
 	/* Code to test if binary tree can add new elements */
 	public void testDelete() {
-		lca binaryTree = new lca();
-		binaryTree.put(7);				//		_7_
-		binaryTree.put(5);				//     /   \
-		binaryTree.put(6);				//	 5		 6
+		lca binaryTree = createBinaryTree();
+
+		assertTrue(bt.containsNode(9));
+		bt.delete(9);
+		assertFalse(bt.containsNode(9));
+		
 		
 		binaryTree.delete(6);	//Should delete leaf with value = 6
 		assertEquals(binaryTree.get(6)==false); // Need to adjust get method to return false if value is not in tree
@@ -35,7 +37,7 @@ class lcatest {
 	
 	@Test
 	/* Code to test if binary tree can calculate lca */
-	public void testDelete() {
+	public void lca() {
 		lca binaryTree = new lca();
 		binaryTree.put(7);				//		_7_
 		binaryTree.put(5);				//     /   \
