@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="lcaTest" project="lca" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="lca.lcaTest" time="0.046" displayname="lcaTest" uniqueid="[engine:junit-jupiter]/[class:lca.lcaTest]">
+    <testcase name="testisEmpty" classname="lca.lcaTest" time="0.028" displayname="testisEmpty()" uniqueid="[engine:junit-jupiter]/[class:lca.lcaTest]/[method:testisEmpty()]"/>
+    <testcase name="testDelete" classname="lca.lcaTest" time="0.009" displayname="testDelete()" uniqueid="[engine:junit-jupiter]/[class:lca.lcaTest]/[method:testDelete()]"/>
+    <testcase name="testInsertNewElements" classname="lca.lcaTest" time="0.009" displayname="testInsertNewElements()" uniqueid="[engine:junit-jupiter]/[class:lca.lcaTest]/[method:testInsertNewElements()]"/>
+  </testsuite>
+</testrun>

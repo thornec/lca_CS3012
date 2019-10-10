@@ -1,0 +1,153 @@
+package lca;
+
+public class lca {
+
+	public static void main(String[] args) {
+		lca bt = new lca(); 		//Create Binary Tree to run tests on
+		bt.createlca();
+		
+		System.out.println(bt.isEmpty());
+		
+	}
+	
+
+	/* Auxiliary Node Class will store values and keep reference to each child */
+	class Node {
+	    int value;
+	    Node left;
+	    Node right;
+	 
+	    Node(int value) {
+	        this.value = value;
+	        right = null;
+	        left = null;
+	    }
+	}
+	
+	Node root;
+
+	/* addRecursive -- Method to insert a new node */
+	private Node addRecursive(Node current, int value) {
+	    if (current == null) {
+	        return new Node(value);
+	    }
+	 
+	    if (value < current.value) {
+	        current.left = addRecursive(current.left, value);
+	    } else if (value > current.value) {
+	        current.right = addRecursive(current.right, value);
+	    } else {
+	        // value already exists
+	        return current;
+	    }
+	 
+	    return current;
+	}
+
+	public void add(int value) {
+	    root = addRecursive(root, value);
+	}
+	
+	/* createlca() - Used to create Binary Tree to run tests on */
+	public lca createlca() {
+	    lca bt = new lca();
+	 
+	    bt.add(6);
+	    bt.add(4);
+	    bt.add(8);
+	    bt.add(3);
+	    bt.add(5);
+	    bt.add(7);
+	    bt.add(9);
+	 
+	    return bt;
+	}
+
+	/* containsNodeRecursive() - Recursively checks if tree contains specified value */
+	private boolean containsNodeRecursive(Node current, int value) {
+	    if (current == null) {
+	        return false;
+	    } 
+	    if (value == current.value) {
+	        return true;
+	    } 
+	    return value < current.value
+	      ? containsNodeRecursive(current.left, value)
+	      : containsNodeRecursive(current.right, value);
+	}
+
+	/* Public Method that starts containsNodeReursive from the root */
+	public boolean containsNode(int value) {
+	    return containsNodeRecursive(root, value);
+	}
+
+	/*deleteRecursive() - Recursively traverses tree to find Node to Delete */
+	private Node deleteRecursive(Node current, int value) {
+	    if (current == null) {
+	        return null;
+	    }
+	 
+	    if (value == current.value) {
+	    	if (current.left == null && current.right == null) {
+	    	    return null;
+	    	}
+	    	if (current.right == null) {
+	    	    return current.left;
+	    	}
+	    	 
+	    	if (current.left == null) {
+	    	    return current.right;
+	    	}
+	    	
+	    	int smallestValue = findSmallestValue(current.right);
+	    	current.value = smallestValue;
+	    	current.right = deleteRecursive(current.right, smallestValue);
+	    	return current;
+	    	
+	    } 
+	    if (value < current.value) {
+	        current.left = deleteRecursive(current.left, value);
+	        return current;
+	    }
+	    current.right = deleteRecursive(current.right, value);
+	    return current;
+	}
+
+
+	private int findSmallestValue(Node root) {
+	    return root.left == null ? root.value : findSmallestValue(root.left);
+	}
+
+	/*Public method that starts deletion from the root */
+	public void delete(int value) {
+	    root = deleteRecursive(root, value);
+	}
+
+	/* Method to check if tree is empty */
+	public boolean isEmpty(){
+			if(root == null) return true;
+			else return false;
+	}
+	
+	/* LCA Implementation */
+	public static Node lowestCommonAncestor(Node root, Node a, Node b) {
+		if(root == null)
+			return null;
+		if(root.value == a.value || root.value == b.value )
+			return root;
+ 
+		Node left=lowestCommonAncestor(root.left,a,b);
+		Node right=lowestCommonAncestor(root.right,a,b);
+ 
+		// If we get left and right not null , it is lca for a and b
+		if(left!=null && right!=null)
+			return root;
+		if(left== null)
+			return right;
+		else
+			return left;
+ 
+	}
+
+	
+}

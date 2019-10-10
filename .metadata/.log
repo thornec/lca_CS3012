@@ -1,0 +1,17 @@
+!SESSION 2019-10-10 18:07:22.051 -----------------------------------------------
+eclipse.buildId=4.13.0.I20190916-1045
+java.fullversion=JRE 1.8.0 IBM J9 2.8 Windows 8 amd64-64 Compressed References 20170722_357405 (JIT enabled, AOT enabled)
+J9VM - R28_20170722_0201_B357405
+JIT  - tr.r14.java_20170722_357405
+GC   - R28_20170722_0201_B357405_CMPRSS
+J9CL - 20170722_357405
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2019-10-10 18:07:39.705
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'U:\'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
